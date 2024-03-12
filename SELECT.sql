@@ -35,6 +35,13 @@ FROM Album a
 JOIN Track t ON a.album_id = t.album_id
 GROUP BY a.name_album;
 
+SELECT DISTINCT a.name_artist
+FROM Artist a
+LEFT JOIN SingerAlbum sa ON a.artist_id = sa.artist_id
+LEFT JOIN Album al ON sa.album_id = al.album_id
+WHERE al.year != 2020 OR al.year IS NULL;
+
+
 SELECT DISTINCT c.name_collection
 FROM Collection c
 JOIN CollectionTrack ct ON c.collection_id = ct.collection_id
